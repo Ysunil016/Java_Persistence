@@ -1,6 +1,0 @@
-package com.ElasticSearch.QueryBuilder;
-
-
-public class ElasticQueryBuilder {
-
-}
