@@ -1,0 +1,13 @@
+package com.ElasticSearch.Repository;
+
+import java.util.List;
+
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+
+import com.ElasticSearch.Model.Logs;
+
+public interface LogRepository extends ElasticsearchRepository<Logs, Long>{
+
+	List<Logs> findByService
+	
+}

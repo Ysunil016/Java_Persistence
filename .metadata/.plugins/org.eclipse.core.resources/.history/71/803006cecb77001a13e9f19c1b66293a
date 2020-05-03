@@ -1,0 +1,5 @@
+package com.ElasticSearch.Model;
+
+public class Logs {
+
+}

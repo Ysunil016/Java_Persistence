@@ -1,0 +1,13 @@
+package com.ElasticSearch.QueryBuilder;
+
+import java.util.List;
+
+import com.ElasticSearch.Model.Log;
+
+public class ElasticQueryBuilder {
+
+	public List<Log> findByPattern(String pattern) {
+
+	}
+
+}

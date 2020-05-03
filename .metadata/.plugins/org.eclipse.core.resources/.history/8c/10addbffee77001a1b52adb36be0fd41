@@ -1,0 +1,20 @@
+package com.ElasticSearch.QueryBuilder;
+
+import java.util.List;
+
+import org.apache.lucene.queryparser.flexible.core.builders.QueryBuilder;
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+
+import com.ElasticSearch.Model.Log;
+
+public class ElasticQueryBuilder {
+
+	public List<Log> findByPattern(String pattern) {
+
+		BoolQueryBuilder query = QueryBuilders.boolQuery()
+				.should(QueryBuilders.queryStringQuery("").lenient(true).field("logMessage").field("logService"));
+
+	}
+
+}

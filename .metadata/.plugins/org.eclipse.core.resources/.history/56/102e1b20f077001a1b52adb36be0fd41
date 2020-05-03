@@ -1,0 +1,8 @@
+package com.ElasticSearch.Configuration;
+
+
+@Configuration
+@EnableElasticsearchRepositories(basePackages = "com.ElasticSearch.Repository")
+public class ElasticConfiguration {
+
+}

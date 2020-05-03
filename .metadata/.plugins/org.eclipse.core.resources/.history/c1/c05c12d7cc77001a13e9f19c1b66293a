@@ -1,0 +1,53 @@
+package com.ElasticSearch.Model;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+@Document(indexName = "Con_Logs", type = "Forum", shards = 1)
+public class Logs {
+
+	@Id
+	private long logId;
+	private String loggingService;
+	private String logMessage;
+	private String logTimestamp;
+
+	public Logs(String logging_service, String log_message, String log_timestamp) {
+		this.log_id = System.nanoTime();
+		this.logging_service = logging_service;
+		this.log_message = log_message;
+		this.log_timestamp = log_timestamp;
+	}
+
+	public Logs() {
+	}
+
+	public long getLog_id() {
+		return log_id;
+	}
+
+	public String getLog_message() {
+		return log_message;
+	}
+
+	public void setLog_message(String log_message) {
+		this.log_message = log_message;
+	}
+
+	public String getLog_timestamp() {
+		return log_timestamp;
+	}
+
+	public void setLog_timestamp(String log_timestamp) {
+		this.log_timestamp = log_timestamp;
+	}
+
+	public String getLogging_service() {
+		return logging_service;
+	}
+
+	public void setLogging_service(String logging_service) {
+		this.logging_service = logging_service;
+	}
+
+}

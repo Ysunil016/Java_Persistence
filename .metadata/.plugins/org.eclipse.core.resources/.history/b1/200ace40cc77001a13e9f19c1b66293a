@@ -1,0 +1,5 @@
+package com.ElasticSearch.Resources;
+
+public class LogsResource {
+
+}

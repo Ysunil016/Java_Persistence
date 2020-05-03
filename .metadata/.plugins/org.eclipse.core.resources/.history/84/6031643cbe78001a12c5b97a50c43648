@@ -1,0 +1,15 @@
+package com.ElasticSearch.Configuration;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
+
+@Configuration
+@EnableElasticsearchRepositories(basePackages = "com.ElasticSearch.Repository")
+public class ElasticConfiguration {
+
+	@Bean
+	  public Client elasticsearchClient() throws UnknownHostException {
+	Settings settings = Settings.builder().put("cluster.name", "elasticsearch"). TransportClient client = new PreBuiltTransportClient(settings); client.addTransportAddress(new TransportAddress(InetAddress.getByName("127.0 return client;
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.ElasticSearch.Repository;
+
+public interface LogRepository {
+
+}

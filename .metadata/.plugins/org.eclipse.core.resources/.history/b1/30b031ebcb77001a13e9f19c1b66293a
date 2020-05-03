@@ -1,0 +1,8 @@
+package com.ElasticSearch.Model;
+
+import org.springframework.data.elasticsearch.annotations.Document;
+
+@Document(indexName = "", type = "", shards = 1)
+public class Logs {
+
+}

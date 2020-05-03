@@ -1,0 +1,7 @@
+package com.ElasticSearch.QueryBuilder;
+
+import com.ElasticSearch.Repository.LogRepository;
+
+public class ElasticQueryBuilder {
+
+}

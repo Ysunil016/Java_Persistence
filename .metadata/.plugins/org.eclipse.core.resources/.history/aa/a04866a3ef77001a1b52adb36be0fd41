@@ -1,0 +1,29 @@
+package com.ElasticSearch.QueryBuilder;
+
+import java.util.List;
+
+import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+
+import com.ElasticSearch.Model.Log;
+
+public class ElasticQueryBuilder {
+
+	@Autowired
+	private ElasticsearchTemplate elasticTemplate;
+
+	protected List<Log> findByPattern(String pattern) {
+
+		BoolQueryBuilder query = QueryBuilders.boolQuery().should(QueryBuilders.queryStringQuery("*" + pattern + "*")
+				.lenient(true).field("logMessage").field("logService"));
+
+		NativeSearchQuery queryBuilder = new NativeSearchQueryBuilder().withQuery(query).build();
+
+		return elasticTemplate.queryForList(queryBuilder, Log.class);
+	}
+
+}

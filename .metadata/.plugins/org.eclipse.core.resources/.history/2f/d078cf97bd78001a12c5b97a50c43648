@@ -1,0 +1,40 @@
+package com.ElasticSearch.Configuration;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+import org.elasticsearch.client.Client;
+import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.settings.Settings;
+import org.elasticsearch.common.transport.TransportAddress;
+import org.elasticsearch.transport.client.PreBuiltTransportClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.elasticsearch.core.ElasticsearchEntityMapper;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.EntityMapper;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
+
+@Configuration
+@EnableElasticsearchRepositories(basePackages = "com.ElasticSearch.Repository")
+public class ElasticConfiguration {
+
+	@Bean
+	public Client elasticClient() throws UnknownHostException {
+		Settings setting = Settings.builder().put("cluster.name", "elasticsearch").build();
+		TransportClient client = new PreBuiltTransportClient(setting);
+		client.addTransportAddress(new TransportAddress(InetAddress.getByName("127.0.0.1"), 8000));
+		return client;
+	}
+
+	@Bean
+	public ElasticsearchTemplate elasticSearchTemplate() throws UnknownHostException {
+		return new ElasticsearchTemplate(elasticClient());
+	}
+
+	@Bean
+	public EntityMapper entityMapper() {
+		ElasticsearchEntityMapper mapper = new ElasticsearchEntityMapper(elasticClient());
+	}
+
+}
